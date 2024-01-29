@@ -1,4 +1,4 @@
-import { FlatList, View, StyleSheet, Text, StatusBar} from 'react-native';
+import { FlatList, View, StyleSheet, StatusBar} from 'react-native';
 import RepositoryItem from './RepositoryItem';
 
 const styles = StyleSheet.create({
