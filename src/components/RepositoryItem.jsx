@@ -44,7 +44,7 @@ const Content = ({ name, description, language, avatar }) => {
         <Text fontWeight="bold" fontSize="subheading">{name}</Text>
         <Text color="textSecondary">{description}</Text>
         <View style={contentStyles.languageContainer}>
-          <Text color="language">{language}</Text>
+          <Text color="pressable">{language}</Text>
         </View>
       </View>      
     </View>

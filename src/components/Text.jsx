@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
   colorPrimary: {
     color: theme.colors.primary,
   },
-  colorLanguage: {
+  colorPressable: {
     color: theme.colors.buttonText,
     backgroundColor: theme.colors.primary,    
     borderRadius: 4,
@@ -28,16 +28,21 @@ const styles = StyleSheet.create({
   fontWeightBold: {
     fontWeight: theme.fontWeights.bold,
   },
+  alignCenter: {
+    textAlign: 'center',
+    padding: 10
+  }
 });
 
-const Text = ({ color, fontSize, fontWeight, style, ...props }) => {
+const Text = ({ color, fontSize, fontWeight, align, style, ...props }) => {
   const textStyle = [
     styles.text,
     color === 'textSecondary' && styles.colorTextSecondary,
     color === 'primary' && styles.colorPrimary,
-    color === 'language' && styles.colorLanguage,
+    color === 'pressable' && styles.colorPressable,
     fontSize === 'subheading' && styles.fontSizeSubheading,
     fontWeight === 'bold' && styles.fontWeightBold,
+    align === 'center' && styles.alignCenter,
     style,
   ];
 
