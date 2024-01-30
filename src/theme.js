@@ -8,7 +8,8 @@ const theme = {
     barText: 'white',
     mainBackground: '#e1e4e8',
     itemBackground: 'white',
-    border: '#586069'
+    border: '#586069',
+    error: 'red'
   },
   fontSizes: {
     body: 14,

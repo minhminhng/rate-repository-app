@@ -15,7 +15,8 @@ const styles = StyleSheet.create({
   item: {
     flexDirection: 'row',
     flexGrow: 1,
-    justifyContent: 'space-around'
+    justifyContent: 'space-around',
+    fontSize: theme.fontSizes.body
   }
 });
 
@@ -28,7 +29,7 @@ const AppBar = () => {
             <AppBarTab tabName="Repositories" />
           </Link>
           <Link to="/signin">
-            <AppBarTab tabName="Sign In" />
+            <AppBarTab tabName="Sign in" />
           </Link>
         </Pressable>
       </ScrollView>
