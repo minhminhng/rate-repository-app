@@ -20,6 +20,9 @@ const theme = {
     normal: '400',
     bold: '700',
   },
+  item: {
+    padding: 10
+  }
 };
 
 export default theme;

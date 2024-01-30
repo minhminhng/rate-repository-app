@@ -1,10 +1,12 @@
-import { StyleSheet } from 'react-native';
-import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
+import { View, StyleSheet } from 'react-native';
 
 import theme from '../theme';
 import Text from './Text';
 
 const styles = StyleSheet.create({
+  container: {
+    padding: theme.item.padding
+  },
   text: {
     color: theme.colors.barText,
     fontSize: theme.fontSizes.body,
@@ -14,9 +16,9 @@ const styles = StyleSheet.create({
 
 const AppBarTab = ( {tabName} ) => {
   return (
-    <Pressable>
+    <View style={styles.container}>
       <Text style={styles.text}>{tabName}</Text>
-    </Pressable>
+    </View>
   );
 };
 
