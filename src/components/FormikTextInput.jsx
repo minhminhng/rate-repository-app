@@ -32,7 +32,7 @@ const FormikTextInput = ({ name, ...props }) => {
     styles.input,
     styles.errorInput,
   ];
-  console.log(inputErrorStyle);
+  
   return (
     <>
       <TextInput
