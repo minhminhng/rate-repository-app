@@ -25,8 +25,10 @@ export const GET_REPOSITORY = gql`
 
 export const GET_USERS = gql`
   query {
-    users {
-      totalCount
+    users edges {
+      node {
+        username
+      }
     }
   }
 `;
