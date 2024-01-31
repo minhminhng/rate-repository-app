@@ -106,7 +106,7 @@ const Footer = ({ item }) => {
 
 const RepositoryItem = ({ item }) => {
   return (
-    <View style={styles.container}>
+    <View testID="repositoryItem" style={styles.container}>
       <Content name={item.fullName} description={item.description} language={item.language} avatar={item.ownerAvatarUrl}/>
       <Footer item={item}/>
   </View>
