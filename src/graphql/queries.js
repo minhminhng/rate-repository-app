@@ -24,11 +24,21 @@ export const GET_REPOSITORY = gql`
 `;
 
 export const GET_USERS = gql`
-  query {
-    users edges {
-      node {
-        username
+  query users {
+    users {
+      edges {
+        node {
+          username
+        }
       }
+    }
+  }
+`;
+
+export const GET_USER = gql`
+  query me {
+    me {
+      username
     }
   }
 `;

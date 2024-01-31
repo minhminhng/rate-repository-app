@@ -1,7 +1,7 @@
 import { FlatList, View, Text, StyleSheet, StatusBar} from 'react-native';
 
 import RepositoryItem from './RepositoryItem';
-import useRepositories from '../hooks/userRepositories';
+import useRepositories from '../hooks/useRepositories';
 
 const styles = StyleSheet.create({
   container: {

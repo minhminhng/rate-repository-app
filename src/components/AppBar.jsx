@@ -1,6 +1,10 @@
-import { View, ScrollView, StyleSheet, Pressable } from 'react-native';
+import { View, ScrollView, Text, StyleSheet, Pressable } from 'react-native';
 import { Link } from 'react-router-native';
 import Constants from 'expo-constants';
+import { useApolloClient } from '@apollo/client';
+
+import useAuthStorage from '../hooks/useAuthStorage';
+import useUser from '../hooks/useUser';
 
 import theme from '../theme';
 import AppBarTab from './AppBarTab';
@@ -21,17 +25,37 @@ const styles = StyleSheet.create({
 });
 
 const AppBar = () => {
+  const { user, loading } = useUser();
+  const authStorage = useAuthStorage();
+  const apolloClient = useApolloClient();
+
+  if (loading) {
+    return <div>loading...</div>;
+  }
+
+  const onSignOut = async () => {
+    try {
+      await authStorage.removeAccessToken();
+      apolloClient.resetStore();
+    } catch (error) {
+      console.error('Error occurred during sign-in:', error);
+    }
+  }
   return (
     <View style={styles.container}>
       <ScrollView horizontal>
-        <Pressable style={styles.item}>
+        <View style={styles.item}>
           <Link to="/">
             <AppBarTab tabName="Repositories" />
           </Link>
-          <Link to="/signin">
+          {!user && <Link to="/signin">
             <AppBarTab tabName="Sign in" />
-          </Link>
-        </Pressable>
+          </Link>}
+          {user && <Pressable onPress={onSignOut}>
+            <AppBarTab tabName="Log out" />
+          </Pressable>
+          }
+        </View>        
       </ScrollView>
     </View>)
 };
