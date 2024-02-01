@@ -1,4 +1,4 @@
-import { FlatList, View, Text, StyleSheet, StatusBar} from 'react-native';
+import { FlatList, View, StyleSheet, StatusBar} from 'react-native';
 
 import RepositoryItem from './RepositoryItem';
 import useRepositories from '../hooks/useRepositories';
@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const ItemSeparator = () => <View style={styles.separator} />;
+export const ItemSeparator = () => <View style={styles.separator} />;
 
 const renderItem = ({ item }) => {
   return (

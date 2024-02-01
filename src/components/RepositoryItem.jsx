@@ -10,12 +10,14 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'stretch',
     backgroundColor: theme.colors.itemBackground,
+    marginBottom: 10
   },
 });
 
 const contentStyles = StyleSheet.create({ 
   container: {
     margin: 5,
+
     flexDirection: 'row',
     flexGrow: 1
   },
@@ -35,10 +37,6 @@ const contentStyles = StyleSheet.create({
   infoContainer: {
     padding:5,
     flexGrow: 1,
-  },
-  horizontalButton: {
-    margin: 10,
-    // padding: 10
   }
 });
 
@@ -116,6 +114,7 @@ export const RepositoryItemContainer = ({ item, showUrl }) => {
   if (!item) {
     return <Text>Loading</Text>
   }
+
   const openUrl = () => {
     if (item.url) {
       Linking.openURL(item.url);
@@ -143,7 +142,7 @@ const RepositoryItem = ({ item }) => {
 
   return (
     <Pressable testID="repositoryItem" onPress={onPress}>
-          <RepositoryItemContainer item={item} />
+        <RepositoryItemContainer item={item} />
     </Pressable> 
   );
 };
