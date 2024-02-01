@@ -1,7 +1,10 @@
 import { View, Image, StyleSheet } from 'react-native';
+import * as Linking from 'expo-linking';
+import { useNavigate } from 'react-router-native';
 
 import Text from './Text';
 import theme from '../theme';
+import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 
 const styles = StyleSheet.create({
   container: {
@@ -12,10 +15,9 @@ const styles = StyleSheet.create({
 
 const contentStyles = StyleSheet.create({ 
   container: {
-    margin: 3,
+    margin: 5,
     flexDirection: 'row',
-    flexGrow: 1,
-    padding: 5
+    flexGrow: 1
   },
   languageContainer: {
     flexDirection: 'row',
@@ -26,12 +28,18 @@ const contentStyles = StyleSheet.create({
     borderRadius: 4,
   },
   avatarContainer: {
+    padding:5,
     flexGrow: 0,
     paddingRight: 15,
   },
   infoContainer: {
+    padding:5,
     flexGrow: 1,
   },
+  horizontalButton: {
+    margin: 10,
+    // padding: 10
+  }
 });
 
 const Content = ({ name, description, language, avatar }) => {
@@ -44,7 +52,7 @@ const Content = ({ name, description, language, avatar }) => {
         <Text fontWeight="bold" fontSize="subheading">{name}</Text>
         <Text color="textSecondary">{description}</Text>
         <View style={contentStyles.languageContainer}>
-          <Text color="pressable">{language}</Text>
+          <Text color="pressable" align="center">{language}</Text>
         </View>
       </View>      
     </View>
@@ -80,7 +88,7 @@ const formatNumber = (num) => {
     }
   }
 
-  return found ? num : null;
+  return num;
 }
 
 const FooterElement = ({ info, value }) => {
@@ -104,12 +112,39 @@ const Footer = ({ item }) => {
   );
 };
 
-const RepositoryItem = ({ item }) => {
+export const RepositoryItemContainer = ({ item, showUrl }) => {
+  if (!item) {
+    return <Text>Loading</Text>
+  }
+  const openUrl = () => {
+    if (item.url) {
+      Linking.openURL(item.url);
+    }
+  }
   return (
-    <View testID="repositoryItem" style={styles.container}>
+    <View style={styles.container}>
       <Content name={item.fullName} description={item.description} language={item.language} avatar={item.ownerAvatarUrl}/>
-      <Footer item={item}/>
-  </View>
+      <Footer item={item}/>    
+      {showUrl && 
+        <Pressable style={{margin: 10}} onPress={openUrl}>
+          <Text color="pressable" align="center" fontWeight="bold" fontSize="subHeading">
+            Open in GitHub
+          </Text>            
+        </Pressable>} 
+    </View>
+  )
+}
+
+const RepositoryItem = ({ item }) => {
+  const navigate = useNavigate();
+  const onPress = () => {
+    navigate(`/repositories/${item.id}`)
+  }
+
+  return (
+    <Pressable testID="repositoryItem" onPress={onPress}>
+          <RepositoryItemContainer item={item} />
+    </Pressable> 
   );
 };
 

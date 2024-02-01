@@ -18,14 +18,11 @@ const styles = {
   container: {
     flex: 0,
     backgroundColor: 'white',
-    padding: 10,
+    padding: 20,
   },
   input: {
     color: theme.colors.textPrimary,
     backgroundColor: theme.colors.itemBackground
-  },
-  button: {
-    // padding: 5
   }
 }
 
@@ -45,7 +42,7 @@ const SignInForm = ({ onSubmit }) => {
       <FormikTextInput name="username" placeholder="Username" />
       <FormikTextInput name="password" placeholder="Password" secureTextEntry/>
      
-      <Pressable style={styles.button} onPress={onSubmit}>
+      <Pressable onPress={onSubmit}>
         <Text color="pressable" align="center" fontWeight="bold">Sign in</Text>
       </Pressable>
     </View>

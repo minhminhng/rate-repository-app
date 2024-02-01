@@ -23,7 +23,7 @@ const ItemSeparator = () => <View style={styles.separator} />;
 
 const renderItem = ({ item }) => {
   return (
-    <RepositoryItem item={item} />
+    <RepositoryItem item={item} showUrl/>
   );
 };
 
@@ -37,8 +37,8 @@ export const RepositoryListContainer = ({ repositories }) => {
     <FlatList
       data={repositoryNodes}
       ItemSeparatorComponent={ItemSeparator}
-      // other props
       renderItem={renderItem}
+      keyExtractor={item => item.id}
     />
   );
 };

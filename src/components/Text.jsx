@@ -19,7 +19,6 @@ const styles = StyleSheet.create({
     color: theme.colors.buttonText,
     backgroundColor: theme.colors.primary,    
     borderRadius: 4,
-    padding: 4,
     marginTop: 5
   },
   fontSizeSubheading: {
@@ -30,7 +29,7 @@ const styles = StyleSheet.create({
   },
   alignCenter: {
     textAlign: 'center',
-    padding: 10
+    padding: 5,
   }
 });
 
