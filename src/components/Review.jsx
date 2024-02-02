@@ -16,18 +16,6 @@ const initialValues = {
     text: ''
 };
 
-const styles = {
-  container: {
-    flex: 0,
-    backgroundColor: 'white',
-    padding: 20,
-  },
-  input: {
-    color: theme.colors.textPrimary,
-    backgroundColor: theme.colors.itemBackground
-  }
-}
-
 const validationSchema = yup.object().shape({
   repositoryName: yup.string().required('Repository name is required').lowercase().trim(),
   ownerName: yup.string().required('Repository owner name is required').lowercase().trim(),
@@ -37,10 +25,10 @@ const validationSchema = yup.object().shape({
   text: yup.string().max(2000, 'Review can have maximum 2000 characters').trim(),
 });
 
-const SignInForm = ({ onSubmit }) => {
+const ReviewForm = ({ onSubmit }) => {
 
   return (
-    <View style={styles.container}>
+    <View style={theme.form}>
       <FormikTextInput name="ownerName" placeholder="Repository owner name" />
       <FormikTextInput name="repositoryName" placeholder="Repository name" />
       <FormikTextInput name="rating" placeholder="Rating between 0 and 100" />
@@ -59,12 +47,12 @@ export const ReviewFormContainer = ({ onSubmit }) => {
       initialValues={{...initialValues}} 
       onSubmit={onSubmit}
       validationSchema={validationSchema}>
-      {({ handleSubmit }) => <SignInForm onSubmit={handleSubmit} />}
+      {({ handleSubmit }) => <ReviewForm onSubmit={handleSubmit} />}
     </Formik>
   ); 
 }
 
-const ReviewForm = () => {
+const Review = () => {
   const [createReview] = useReview();
   const navigate = useNavigate();
 
@@ -87,4 +75,4 @@ const ReviewForm = () => {
   ); 
 };
 
-export default ReviewForm;
+export default Review;

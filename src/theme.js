@@ -30,6 +30,11 @@ const theme = {
   },
   item: {
     padding: 10
+  },
+  form: {
+    flex: 0,
+    backgroundColor: 'white',
+    padding: 20,
   }
 };
 

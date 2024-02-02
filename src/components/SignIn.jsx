@@ -14,18 +14,6 @@ const initialValues = {
   password: '',
 };
 
-const styles = {
-  container: {
-    flex: 0,
-    backgroundColor: 'white',
-    padding: 20,
-  },
-  input: {
-    color: theme.colors.textPrimary,
-    backgroundColor: theme.colors.itemBackground
-  }
-}
-
 const validationSchema = yup.object().shape({
   username: yup
     .string()
@@ -38,7 +26,7 @@ const validationSchema = yup.object().shape({
 const SignInForm = ({ onSubmit }) => {
 
   return (
-    <View style={styles.container}>
+    <View style={theme.form}>
       <FormikTextInput name="username" placeholder="Username" />
       <FormikTextInput name="password" placeholder="Password" secureTextEntry/>
      
