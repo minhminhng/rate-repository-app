@@ -1,12 +1,13 @@
 import { Component, useState } from 'react';
 import { FlatList, View, StyleSheet, StatusBar} from 'react-native';
-import { useDebounce, useDebouncedCallback } from 'use-debounce';
+import { Searchbar } from 'react-native-paper';
+import { useDebouncedCallback } from 'use-debounce';
+
+import useRepositories from '../hooks/useRepositories';
 
 import RepositoryItem from './RepositoryItem';
 import SortingMenu from './SortingMenu';
-import { Searchbar } from 'react-native-paper';
-import useRepositories from '../hooks/useRepositories';
-
+import { ItemSeparator } from './ItemSeperator';
 
 const styles = StyleSheet.create({
   container: {
@@ -28,8 +29,6 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   }
 });
-
-export const ItemSeparator = () => <View style={styles.separator} />;
 
 const renderItem = ({ item }) => {
   return (
@@ -97,7 +96,6 @@ const RepositoryList = () => {
     setOrder={setOrder} setDirection={setDirection} 
     setOption={setOption} option={option}
     setSearchKeyword={setSearchKeyword} searchKeyword={searchKeyword}
-    // debounceCallback={debounced}
     />;
 };
 
