@@ -30,12 +30,6 @@ const styles = StyleSheet.create({
   }
 });
 
-const renderItem = ({ item }) => {
-  return (
-    <RepositoryItem item={item} showUrl/>
-  );
-};
-
 export class RepositoryListContainer extends Component {
   renderHeader = () => {
     const { setOrder, setDirection, setOption, option, searchKeyword, setSearchKeyword } = this.props;
@@ -70,7 +64,7 @@ export class RepositoryListContainer extends Component {
       <FlatList
         data={this.props.repositories}
         ItemSeparatorComponent={ItemSeparator}
-        renderItem={renderItem}
+        renderItem={({ item }) => <RepositoryItem item={item} showUrl/>}
         keyExtractor={item => item.id}
         ListHeaderComponent={() => this.renderHeader(this.props)}
       />
