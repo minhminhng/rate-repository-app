@@ -1,4 +1,4 @@
-import { View, Pressable } from 'react-native';
+import { View } from 'react-native';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { useNavigate } from 'react-router-native';
@@ -32,7 +32,7 @@ const SignUpForm = ({ onSubmit }) => {
       <FormikTextInput name="passwordConfirm" placeholder="Password confirmation" secureTextEntry/>
      
       <Pressable onPress={onSubmit}>
-        <Text color="pressable" align="center" fontWeight="bold">Sign up</Text>
+        <Text style="buttonPrimary">Sign up</Text>
       </Pressable>
     </View>
   )  

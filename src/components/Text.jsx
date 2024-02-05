@@ -15,33 +15,35 @@ const styles = StyleSheet.create({
   colorPrimary: {
     color: theme.colors.primary,
   },
-  colorPressable: {
+  button: {
     color: theme.colors.buttonText,
-    backgroundColor: theme.colors.primary,    
+    backgroundColor: theme.colors.primary,
+    fontWeight: theme.fontWeights.bold,
+    textAlign: 'center',
+    padding: 10,
     borderRadius: 4,
     marginTop: 5
+  },
+  buttonRed: {
+    backgroundColor: theme.colors.error,
   },
   fontSizeSubheading: {
     fontSize: theme.fontSizes.subheading,
   },
   fontWeightBold: {
     fontWeight: theme.fontWeights.bold,
-  },
-  alignCenter: {
-    textAlign: 'center',
-    padding: 5,
   }
 });
 
-const Text = ({ color, fontSize, fontWeight, align, style, ...props }) => {
+const Text = ({ color, fontSize, fontWeight, style, ...props }) => {
   const textStyle = [
     styles.text,
     color === 'textSecondary' && styles.colorTextSecondary,
     color === 'primary' && styles.colorPrimary,
-    color === 'pressable' && styles.colorPressable,
     fontSize === 'subheading' && styles.fontSizeSubheading,
     fontWeight === 'bold' && styles.fontWeightBold,
-    align === 'center' && styles.alignCenter,
+    style === 'buttonPrimary' && styles.button,
+    style === 'buttonRed' && [styles.button, styles.buttonRed],
     style,
   ];
 

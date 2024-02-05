@@ -2,14 +2,14 @@ import { useQuery } from '@apollo/client';
 import { GET_USER } from '../graphql/queries';
 
 const useUser = (includeReviews) => {
-  const result = useQuery(GET_USER, {
+  const { loading, data, refetch } = useQuery(GET_USER, {
     fetchPolicy: 'cache-and-network',
     variables: { includeReviews }
   });
   
-  const user = result.data ? result.data.me : null;
+  const user = data ? data.me : null;
 
-  return { user, loading: result.loading };
+  return { user, loading: loading, refetch };
 };
 
 export default useUser;

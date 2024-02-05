@@ -7,7 +7,7 @@ import useRepositories from '../hooks/useRepositories';
 
 import RepositoryItem from './RepositoryItem';
 import SortingMenu from './SortingMenu';
-import { ItemSeparator } from './ItemSeperator';
+import ItemSeparator from './ItemSeparator';
 
 const styles = StyleSheet.create({
   container: {

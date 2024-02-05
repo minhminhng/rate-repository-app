@@ -4,7 +4,7 @@ import { useParams } from 'react-router-native';
 import useRepository from '../hooks/useRepository';
 import ReviewItem from './ReviewItem';
 import { RepositoryItemContainer } from "./RepositoryItem";
-import ItemSeparator from './ItemSeperator';
+import ItemSeparator from './ItemSeparator';
 
 const RepositoryInfo = ({ repository }) => {
   return <RepositoryItemContainer item={repository} showUrl/>

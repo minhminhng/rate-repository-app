@@ -6,7 +6,16 @@ export const AUTHENTICATE = gql`
       accessToken
     }
   }
-`;
+`
+
+export const CREATE_USER = gql`
+  mutation CreateUser($user: CreateUserInput) {
+    createUser(user: $user) {
+      username
+      id
+    }
+  }
+`
 
 export const CREATE_REVIEW = gql`
   mutation CreateReview($review: CreateReviewInput){
@@ -25,11 +34,8 @@ export const CREATE_REVIEW = gql`
   }
 `
 
-export const CREATE_USER = gql`
-  mutation CreateUser($user: CreateUserInput) {
-    createUser(user: $user) {
-      username
-      id
-    }
+export const DELETE_REVIEW = gql`
+  mutation DeleteReview($deleteReviewId: ID!) {
+    deleteReview(id: $deleteReviewId)
   }
 `

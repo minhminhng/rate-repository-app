@@ -75,6 +75,7 @@ export const GET_USER = gql`
             rating
             repository {
               fullName
+              url
             }
             text
           }

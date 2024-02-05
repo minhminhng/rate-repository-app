@@ -71,7 +71,7 @@ const AppBar = () => {
             </Link>}
           {user && 
             <Link to="/userReview">
-              <AppBarTab tabName="My review" />
+              <AppBarTab tabName="My reviews" />
             </Link>}
           {user && 
             <Pressable onPress={onSignOut}>

@@ -1,10 +1,9 @@
-import { View, Image, StyleSheet } from 'react-native';
+import { View, Image, Pressable, StyleSheet } from 'react-native';
 import * as Linking from 'expo-linking';
 import { useNavigate } from 'react-router-native';
 
 import Text from './Text';
 import theme from '../theme';
-import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 
 const styles = StyleSheet.create({
   container: {
@@ -49,7 +48,7 @@ const Content = ({ name, description, language, avatar }) => {
         <Text fontWeight="bold" fontSize="subheading">{name}</Text>
         <Text color="textSecondary">{description}</Text>
         <View style={contentStyles.languageContainer}>
-          <Text color="pressable" align="center">{language}</Text>
+          <Text style="buttonPrimary">{language}</Text>
         </View>
       </View>      
     </View>
@@ -125,7 +124,7 @@ export const RepositoryItemContainer = ({ item, showUrl }) => {
       <Footer item={item}/>    
       {showUrl && 
         <Pressable style={{margin: 10}} onPress={openUrl}>
-          <Text color="pressable" align="center" fontWeight="bold" fontSize="subHeading">
+          <Text style="buttonPrimary">
             Open in GitHub
           </Text>            
         </Pressable>} 
