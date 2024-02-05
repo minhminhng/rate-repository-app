@@ -2,12 +2,18 @@ import { gql } from '@apollo/client';
 import { REPOSITORY_DETAILS } from './fragment';
 
 export const GET_REPOSITORIES = gql`
-  query repositories($orderDirection: OrderDirection, $orderBy: AllRepositoriesOrderBy, $searchKeyword: String) {
-    repositories(orderDirection: $orderDirection, orderBy: $orderBy, searchKeyword: $searchKeyword) {
+  query repositories($orderDirection: OrderDirection, $orderBy: AllRepositoriesOrderBy, $searchKeyword: String, $after: String, $first: Int) {
+    repositories(orderDirection: $orderDirection, orderBy: $orderBy, searchKeyword: $searchKeyword, after: $after, first: $first) {
       edges {
         node {
           ...RepositoryDetails
         }
+        cursor
+      }
+      pageInfo {
+        endCursor
+        startCursor
+        hasNextPage
       }
     }
   }
@@ -15,11 +21,12 @@ export const GET_REPOSITORIES = gql`
 `;
 
 export const GET_REPOSITORY = gql`
-  query repository($repositoryId: ID!) {
+  query repository($repositoryId: ID!, $after: String, $first: Int) {
     repository(id: $repositoryId) {
       ...RepositoryDetails,
       url
-      reviews {
+      reviews (after: $after, first: $first) {
+        totalCount
         edges {
           node {
             id
@@ -31,24 +38,17 @@ export const GET_REPOSITORY = gql`
               username
             }
           }
+          cursor
+        }
+        pageInfo {
+          endCursor
+          startCursor
+          hasNextPage
         }
       }
     }
   }
   ${REPOSITORY_DETAILS}
-`;
-
-export const FILTER_REPOSITORIES = gql`
-  query filterRepository($searchKeyword: String) {
-    repositories(searchKeyword: $searchKeyword) {
-      edges {
-        node {
-          id
-          fullName
-        }
-      }
-    }
-  }
 `;
 
 export const GET_USERS = gql`

@@ -59,37 +59,42 @@ export class RepositoryListContainer extends Component {
     );
   };
   
-  render() {    
+  render() {
+    const repositoryNodes = this.props.repositories
+    ? this.props.repositories.edges.map(edge => edge.node)
+    : [];
     return (
       <FlatList
-        data={this.props.repositories}
+        data={repositoryNodes}
         ItemSeparatorComponent={ItemSeparator}
         renderItem={({ item }) => <RepositoryItem item={item} showUrl/>}
         keyExtractor={item => item.id}
         ListHeaderComponent={() => this.renderHeader(this.props)}
+        onEndReached={this.props.onEndReach}
+        onEndReachedThreshold={0.5}
       />
     );
   }
 }
 
 const RepositoryList = () => {
-  const [order, setOrder] = useState('CREATED_AT');
-  const [direction, setDirection] = useState('DESC');
+  const [orderBy, setOrder] = useState('CREATED_AT');
+  const [orderDirection, setDirection] = useState('DESC');
   const [searchKeyword, setSearchKeyword] = useState('');
   const [option, setOption] = useState(1);
   
-  const { repositories } = useRepositories(order, direction, searchKeyword);
+  const { repositories, fetchMore } = useRepositories({ first: 7, orderBy, orderDirection, searchKeyword });
 
-  // Get the nodes from the edges array
-  const repositoryNodes = repositories
-    ? repositories.edges.map(edge => edge.node)
-    : [];
+  const onEndReach = () => {
+    fetchMore();
+  };
 
   return <RepositoryListContainer 
-    repositories={repositoryNodes} 
+    repositories={repositories} 
     setOrder={setOrder} setDirection={setDirection} 
     setOption={setOption} option={option}
     setSearchKeyword={setSearchKeyword} searchKeyword={searchKeyword}
+    onEndReach={onEndReach}
     />;
 };
 

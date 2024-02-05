@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'stretch',
     backgroundColor: theme.colors.itemBackground,
-    marginBottom: 10
+    marginBottom: 15
   },
 });
 
